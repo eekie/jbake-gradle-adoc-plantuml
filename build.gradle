@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctorj-diagram:1.5.4'
+    }
+}
+
+plugins {
+    id 'org.jbake.site' version '1.0.0'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+jbake {
+    version = "2.5.1"
+    asciidoctorJavaIntegrationVersion = '0.1.4'
+    asciidoctorjVersion = "1.5.5"
+    srcDirName  = 'src'
+    destDirName = 'output'
+    configuration['render.tags'] = true
+    configuration['db.store'] = "local"
+    configuration['db.path']= "build/cache"
+    configuration['asciidoctor.option.requires'] = "asciidoctor-diagram"
+    configuration['asciidoctor.attributes'] = [
+            "sourceDir=${projectDir}/src",
+            "imagesdir=/img",
+            "imagesoutdir=${buildDir}/output/img",
+            "source-highlighter=highlight.js",
+            "icons=font"
+    ]
+}

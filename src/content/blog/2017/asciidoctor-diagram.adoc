@@ -1,0 +1,15 @@
+= asciidoctor diagram
+Tom Eekman
+2017-06-22
+:jbake-type: post
+:jbake-tags: documentation
+:jbake-status: published
+
+[plantuml, "asciidoctor-sequence-diagram", "png"]
+----
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+----
