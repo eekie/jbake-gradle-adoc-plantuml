@@ -16,7 +16,9 @@ Alice <-- Bob: another authentication Response
 
 ```
 
-it will render like this in html output dir: ![JBake plantuml diagram](sequence-diagram.png)
+it will render like this in html output dir: 
+
+![JBake plantuml diagram](sequence-diagram.png)
 
 
 To kick off the continuous build with gradle:
@@ -24,17 +26,15 @@ To kick off the continuous build with gradle:
 `./gradlew bake --continuous`
 
 The output will be generated in build/output
-Changes to the source files will be detected automatically by gradle (--continuous)
 
+To make sure the img tags in html work properly (`<img src="/img/..."`) 
+you best serve the output over http. 
 
-To the make `<img src="/img/..."` work in generated html you best serve the output over http. 
-
-We could create a gradle task to serve content with gretty.
+We could create a gradle task to serve content with gretty 
 but for now we just use jbake command to serve content.
 
 install jbake with
 `brew install jbake`
-
 
 serve static content with
 `jbake -s build/output`
