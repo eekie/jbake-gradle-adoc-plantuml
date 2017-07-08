@@ -1,0 +1,11 @@
+version: '2'
+services:
+  asciidoctor:
+    build: .
+    image: eekie/asciidoc
+    ports:
+      - 80:80
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

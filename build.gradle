@@ -32,7 +32,7 @@ jbake {
             "sourceDir=${projectDir}/src",
             "imagesdir=/img",
             "imagesoutdir=${buildDir}/output/img",
-            "source-highlighter=highlight.js",
+            "source-highlighter=coderay",
             "icons=font"
     ]
 }

@@ -1,0 +1,17 @@
+= java snippet
+Tom Eekman
+2017-07-07
+:jbake-type: post
+:jbake-tags: documentation
+:jbake-status: published
+:source-highlighter: coderay
+
+[source,java]
+.Java code
+----
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello world");
+    }
+}
+----
