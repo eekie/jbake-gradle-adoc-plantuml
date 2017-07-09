@@ -1,11 +1,32 @@
-version: '2'
+version: '3'
 services:
-  asciidoctor:
-    build: .
-    image: eekie/asciidoc
-    ports:
-      - 80:80
+
+  gradle:
+    build: docker/gradle
+    image: eekie/jbake-adoc-build
+    volumes:
+      - ./build.gradle:/jbake-adoc/build.gradle
+      - ./src:/jbake-adoc/src
+      - jbake-static:/jbake-adoc/build/output
+      - ~/.gradle:/root/.gradle
+    working_dir: /jbake-adoc
     logging:
       options:
         max-size: "10m"
         max-file: "10"
+
+  nginx:
+    build: docker/nginx
+    image: eekie/jbake-adoc-http
+    ports:
+      - 80:80
+    volumes:
+      - jbake-static:/usr/share/nginx/html
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+volumes:
+  jbake-static:
+    driver: local
