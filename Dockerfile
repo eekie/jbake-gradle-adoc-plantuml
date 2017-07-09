@@ -4,7 +4,14 @@ RUN apk add --no-cache python2 py-pip ruby ruby-dev
 RUN pip install pygments
 RUN gem install --no-ri --no-rdoc asciidoctor pygments.rb coderay
 WORKDIR /usr/src/playground
-VOLUME /root/.gradle
+RUN chown -R gradle.gradle /usr/src/playground
+#USER gradle
+VOLUME ["/root/.gradle"]
+COPY build.gradle /usr/src/playground
+COPY src/templates /usr/src/playground/src/templates
+#RUN chown -R gradle.gradle /usr/src/playground
+RUN mkdir src/content
+RUN gradle bake
 COPY . .
 RUN gradle bake
 

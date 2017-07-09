@@ -1,3 +1,4 @@
+
 buildscript {
     repositories {
         mavenLocal()
@@ -6,12 +7,15 @@ buildscript {
 
     dependencies {
         classpath 'org.asciidoctor:asciidoctorj-diagram:1.5.4'
+        //classpath 'org.jbake.site:1.0.0'
     }
 }
 
 plugins {
     id 'org.jbake.site' version '1.0.0'
+//    id 'java'
 }
+//apply plugin: 'org.jbake.site'
 
 repositories {
     mavenLocal()
@@ -35,4 +39,10 @@ jbake {
             "source-highlighter=coderay",
             "icons=font"
     ]
+}
+
+task resolveAllDependencies {
+    doLast {
+        configurations.all { it.resolve() }
+    }
 }
